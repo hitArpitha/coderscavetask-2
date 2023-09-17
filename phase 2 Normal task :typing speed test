@@ -1,0 +1,35 @@
+import time
+import random
+
+def typing_speed_test():
+    sample_texts = [
+        "The quick brown fox jumps over the lazy dog.",
+        "A journey of a thousand miles begins with a single step.",
+        "Better late than never, but never late is better.",
+        "Two wrongs don't make a right.",
+        "The early bird catches the worm.",
+        "Honesty is the best policy."
+    ]
+    
+    prompt_text = random.choice(sample_texts)
+    
+    print("Typing Speed Test\n")
+    print(f"Type the following text:\n\n{prompt_text}")
+    input("\nPress Enter to start the test...")
+    
+    start_time = time.time()
+    user_input = input("\nStart typing here: ")
+    end_time = time.time()
+
+    elapsed_time = end_time - start_time
+    words = len(user_input.split())
+    words_per_minute = (words / elapsed_time) * 60
+
+    if user_input == prompt_text:
+        print(f"\nCorrect! Your typing speed is: {words_per_minute:.2f} words per minute.")
+    else:
+        print("\nThe text you typed doesn't match the prompt. Please try again.")
+        print(f"Your typing speed is: {words_per_minute:.2f} words per minute, but with errors.")
+
+if __name__ == "__main__":
+    typing_speed_test()
